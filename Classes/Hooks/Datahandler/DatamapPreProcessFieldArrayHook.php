@@ -59,7 +59,7 @@ class DatamapPreProcessFieldArrayHook
             return $incomingFieldArray;
         }
         $record = $this->database->fetchOneRecord(-(int)$incomingFieldArray['pid']);
-        if ($record === null || $record['tx_container_parent'] > 0) {
+        if ($record === null || isset($record['tx_container_parent']) && ($record['tx_container_parent'] > 0)) {
             // new elements in container have already correct target
             return $incomingFieldArray;
         }
